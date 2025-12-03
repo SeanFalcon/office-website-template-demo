@@ -1,36 +1,234 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LemonCat Office - 开源官网开发模板
 
-## Getting Started
+一套开源、高性能、可复用且带优质动画效果的官网开发模板，基于Next.js 14+（App Router）和Shadcn UI构建，助力企业快速构建现代化官网。
 
-First, run the development server:
+## 🌟 核心特性
+
+- **框架**: Next.js 14+ (App Router) + TypeScript
+- **样式方案**: Tailwind CSS
+- **组件库**: Shadcn UI
+- **动画方案**: CSS 动画 + 轻量 JS 动画
+- **渲染模式**: SSG (静态站点生成) + SSR (服务端渲染)
+- **图片优化**: Next.js Image 组件
+- **字体优化**: 内置 Inter 字体，支持 font-display: swap
+- **响应式设计**: 适配移动端、平板、桌面端和大屏设备
+- **SEO 友好**: 完整的 Meta 标签配置，支持 Open Graph 和 Twitter Card
+- **无障碍兼容**: 尊重系统 `prefers-reduced-motion` 设置
+
+## 🚀 快速开始
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 开发环境
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000 查看效果
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 构建生产版本
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### 预览生产版本
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run preview
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 项目结构
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+.
+├── app/                    # App Router 目录
+│   ├── layout.tsx          # 根布局组件
+│   ├── page.tsx            # 首页
+│   ├── not-found.tsx       # 404 页面
+│   └── globals.css         # 全局样式
+├── components/             # 自定义组件
+│   ├── navbar.tsx          # 导航栏组件
+│   ├── hero.tsx            # Hero 区域组件
+│   ├── features.tsx        # 特性展示组件
+│   ├── cases.tsx           # 案例展示组件
+│   ├── team.tsx            # 团队介绍组件
+│   ├── faq.tsx             # FAQ 组件
+│   └── contact-form.tsx    # 联系表单组件
+├── components/ui/          # Shadcn UI 组件
+├── lib/                    # 工具函数
+├── public/                 # 静态资源
+├── next.config.ts          # Next.js 配置
+├── package.json            # 项目依赖
+├── tsconfig.json           # TypeScript 配置
+└── README.md               # 项目文档
+```
 
-## Deploy on Vercel
+## 🎨 动画方案
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 动画类型
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **基础交互动画**
+   - 按钮 hover 缩放 + 阴影加深
+   - 链接 hover 颜色过渡
+   - 输入框聚焦边框渐变 + 轻微放大
+
+2. **页面过渡动画**
+   - 元素进入视口时渐显 + 上移
+   - 导航栏滚动时背景透明度渐变
+
+3. **滚动触发动画**
+   - 元素进入视口时触发入场动画
+   - Hero 区背景图轻微视差滚动
+
+4. **加载与反馈动画**
+   - 按钮加载 spinner 动画
+   - 表单提交成功/失败反馈动画
+
+### 动画优化
+
+- 优先使用 `transform` 和 `opacity` 属性，触发 GPU 加速
+- 使用 Intersection Observer API 触发滚动动画
+- 尊重系统 `prefers-reduced-motion` 设置
+- 动画时长控制在 200-600ms 之间
+
+## 📱 响应式设计
+
+### 适配断点
+
+- 移动端: 320px+
+- 平板: 768px+
+- 桌面端: 1200px+
+- 大屏: 1920px+
+
+### 适配策略
+
+- 导航栏: 移动端汉堡菜单，桌面端完整展示
+- 卡片布局: 移动端单列，平板双列，桌面端 3-4 列
+- 动画效果: 移动端降低动画幅度，禁用非必要动画
+
+## 🔧 自定义配置
+
+### 修改主题色
+
+在 `tailwind.config.ts` 中修改主题颜色配置：
+
+```typescript
+theme: {
+  extend: {
+    colors: {
+      primary: '#3b82f6', // 修改为主色调
+      secondary: '#64748b', // 修改为辅助色
+    },
+  },
+}
+```
+
+### 修改动画效果
+
+在 `app/globals.css` 中修改或添加动画类：
+
+```css
+@layer utilities {
+  .animate-custom {
+    animation: customAnimation 500ms ease-out forwards;
+  }
+
+  @keyframes customAnimation {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+```
+
+### 添加新页面
+
+在 `app` 目录下创建新的文件夹和 `page.tsx` 文件：
+
+```typescript
+// app/about/page.tsx
+export default function About() {
+  return (
+    <div className="py-20">
+      <h1 className="text-3xl font-bold">关于我们</h1>
+      {/* 页面内容 */}
+    </div>
+  );
+}
+```
+
+## 📄 开源协议
+
+MIT License
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📞 联系方式
+
+如有问题或建议，欢迎通过以下方式联系我们：
+
+- Email: contact@example.com
+- GitHub: https://github.com/example/ai-office
+
+## 📚 文档
+
+- [Next.js 文档](https://nextjs.org/docs)
+- [Shadcn UI 文档](https://ui.shadcn.com/docs)
+- [Tailwind CSS 文档](https://tailwindcss.com/docs)
+
+## 📦 依赖
+
+- next: ^14.0.0
+- react: ^18.2.0
+- react-dom: ^18.2.0
+- shadcn-ui: ^0.9.0
+- tailwindcss: ^4.0.0
+- lucide-react: ^0.290.0
+
+## 🔍 SEO 优化
+
+- 完整的 Meta 标签配置
+- 支持 Open Graph 和 Twitter Card
+- 语义化 HTML 结构
+- 优化的图片加载
+- 快速的页面加载速度
+
+## ⚡ 性能优化
+
+- 代码分割
+- 图片优化
+- 字体优化
+- 缓存策略
+- 硬件加速动画
+- 减少重排重绘
+
+## 🎯 浏览器支持
+
+- Chrome (最新 2 个版本)
+- Firefox (最新 2 个版本)
+- Safari (最新 2 个版本)
+- Edge (最新 2 个版本)
+
+## 📝 版本更新
+
+### v1.0.0
+
+- 初始版本发布
+- 支持 Next.js 14+ (App Router)
+- 集成 Shadcn UI 组件库
+- 实现核心功能模块
+- 添加完整的动画效果
+- 优化 SEO 和性能
