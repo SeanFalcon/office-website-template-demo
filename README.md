@@ -180,8 +180,8 @@ MIT License
 
 如有问题或建议，欢迎通过以下方式联系我们：
 
-- Email: contact@example.com
-- GitHub: https://github.com/example/ai-office
+- GitHub: https://github.com/SeanFalcon/office-website-template-demo
+- Gitee: https://gitee.com/lemoncatgit/office-website-template-demo
 
 ## 📚 文档
 
