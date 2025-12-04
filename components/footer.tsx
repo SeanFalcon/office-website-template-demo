@@ -80,7 +80,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-ss
+
           <div>
             <h4 className="text-lg font-semibold mb-4">快速链接</h4>
             <ul className="space-y-2">
