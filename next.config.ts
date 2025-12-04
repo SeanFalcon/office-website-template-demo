@@ -34,9 +34,9 @@ const nextConfig: NextConfig = {
   // Configure trailing slash behavior
   trailingSlash: false,
   // Configure base path if needed
-  basePath: "",
+  basePath: "/office-website-template-demo",
   // Configure asset prefix if needed
-  assetPrefix: "",
+  assetPrefix: "/office-website-template-demo",
 
   // Configure TypeScript options
   typescript: {
